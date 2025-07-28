@@ -19,19 +19,18 @@ jobs:
 
       - name: Deploy to EC2
         run: |
-          ssh -tt ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+          ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
             cd ${{ secrets.EC2_PATH }}
-            git fetch origin main
-            git reset --hard origin/main
-      
+            git pull origin main
+
+            # Build frontend
             cd client
             npm install
             sudo npm run build
             cd ..
 
-            cd server
-            pm2 delete backend || true
-            pm2 start index.js --name backend
-      
+            # Restart backend with PM2
+            pm2 restart backend || pm2 start index.js --name backend
+
             echo "✅ Deployment done!"
           EOF
