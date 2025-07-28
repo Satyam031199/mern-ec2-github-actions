@@ -27,9 +27,11 @@ jobs:
             cd client
             npm install
             sudo npm run build
-            cd ..
+            
 
             # Restart backend with PM2
+            cd ..
+            cd server
             pm2 restart backend || pm2 start index.js --name backend
 
             echo "✅ Deployment done!"
