@@ -29,7 +29,7 @@ jobs:
             # Build frontend
             cd client
             npm install
-            npm run build
+            sudo npm run build
             cd ..
 
             # Restart backend with PM2
