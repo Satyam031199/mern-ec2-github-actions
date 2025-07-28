@@ -47,6 +47,7 @@ function App() {
       </div>
       <h1>Basic Vite App</h1>
       <h3>Deployed to EC2 using Github Actions</h3>
+      <p>Satyam Chaturvedi</p>
 
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
