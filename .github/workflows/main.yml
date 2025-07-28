@@ -26,9 +26,10 @@ jobs:
       
             cd client
             npm install
-            npm run build
+            sudo npm run build
             cd ..
-      
+
+            cd server
             pm2 delete backend || true
             pm2 start index.js --name backend
       
